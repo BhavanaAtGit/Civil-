@@ -1,0 +1,55 @@
+/* ReviewCase.css */
+
+.review-case-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.case-details-container {
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.case-details {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.case-details:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.deadlines-container {
+  background-color: #ebebeb;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.deadline-item {
+  margin-bottom: 10px;
+}
+
+.deadline-item span {
+  font-weight: bold;
+}
+
+.case-aspects-container {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.case-aspect {
+  margin-bottom: 10px;
+}
+
+.case-aspect h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}

@@ -1,0 +1,99 @@
+/* LegalTalks.css */
+.legal-talks-container {
+  display: flex;
+}
+
+.sidebar {
+  background-color: #b38b6d;
+  padding: 20px;
+  width: 200px;
+  height: 100vh;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  color: white;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.question-container {
+  background-color: white;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.question {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.answers {
+  list-style: none;
+  padding: 0;
+}
+
+.metadata {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: #d3d3d3;
+  font-size: 14px;
+}
+
+.vote-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.upvote-button,
+.downvote-button {
+  background-color: white;
+  color: #b38b6d;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.upvote-button:hover,
+.downvote-button:hover {
+  background-color: #d3d3d3;
+}
+
+.add-answer input[type="text"] {
+  width: calc(100% - 90px);
+  margin-right: 10px;
+}
+
+.add-answer button {
+  background-color: #b38b6d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.add-answer button:hover {
+  background-color: #987151;
+}

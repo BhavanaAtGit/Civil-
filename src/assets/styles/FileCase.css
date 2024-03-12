@@ -1,0 +1,46 @@
+/* FileCase.css */
+
+.file-case-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .file-case-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .file-case-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .file-case-form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .file-case-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .file-case-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .file-case-form button:hover {
+    background-color: #0056b3;
+  }
+  
