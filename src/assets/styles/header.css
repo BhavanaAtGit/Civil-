@@ -1,0 +1,31 @@
+
+  
+  .logo-container {
+    display: flex;
+    align-items: left;
+  }
+  
+  
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+    z-index: 1000; /* Ensure it stays above other content */
+    
+  }
+  
+  .logo {
+    width: 80px;
+    height: 80px;
+    margin-right: 30px;
+    
+  }
+  
+  .title {
+    color: #98623c;
+    text-decoration: double;
+  }

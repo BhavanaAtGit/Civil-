@@ -1,52 +1,81 @@
-// AdvocateDashboard.js
-
-import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
-import FileCase from './FileCase'; // Correct import path
-import ReviewCase from './ReviewCase';
-import Documentation from './Documentation';
-import LegalTalks from './LegalTalks';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { db } from '../config/firebase-config';
+import { getDocs, collection } from 'firebase/firestore';
 import '../assets/styles/Advocate.css';
 
+
 const AdvocateDashboard = () => {
-    // Dummy data for running cases
-    const runningCases = [
-      { id: 1, caseNumber: 'CASE001', clientName: 'John Doe', status: 'Pending' },
-      { id: 2, caseNumber: 'CASE002', clientName: 'Jane Smith', status: 'In Progress' },
-      { id: 3, caseNumber: 'CASE003', clientName: 'Alice Johnson', status: 'In Progress' },
-    ];
-  
-    return (
-      <div className="advocate-container">
-        <nav className="side-navbar">
-          <ul>
-            <li><Link to="">Home</Link></li>
-            <li><Link to="/FileCase">File Case</Link></li>
-            <li><Link to="/ReviewCase">Review Case</Link></li>
-            <li><Link to="/documentation">Documentation</Link></li>
-            <li><Link to="/legaltalks">LegalTalks</Link></li>
-          </ul>
-        </nav>
-        <div className="running-cases-container">
-          <h2>Running Cases</h2>
-          <div className="cases-list">
-            {runningCases.map((caseItem) => (
-              <div key={caseItem.id} className="case-item">
-                <p>Case Number: {caseItem.caseNumber}</p>
-                <p>Client Name: {caseItem.clientName}</p>
-                <p>Status: {caseItem.status}</p>
-              </div>
-            ))}
-          </div>
+  const [runningCases, setRunningCases] = useState([]);
+  const [filter, setFilter] = useState('All');
+
+  useEffect(() => {
+    const fetchRunningCases = async () => {
+      try {
+        const casesCollection = collection(db, 'cases');
+        const casesSnapshot = await getDocs(casesCollection);
+        const casesData = casesSnapshot.docs.map(snapshot => ({
+          id: snapshot.id,
+          data: snapshot.data()
+        }));
+        setRunningCases(casesData);
+      } catch (error) {
+        console.error('Error fetching running cases: ', error);
+      }
+    };
+
+    fetchRunningCases();
+
+    return () => {
+      // Cleanup function if needed
+    };
+  }, []);
+
+  const filteredCases = runningCases.filter((caseItem) => {
+    if (filter === 'All') {
+      return true;
+    } else {
+      return caseItem.data.status === filter;
+    }
+  });
+
+  return (
+    <div className="advocate-container">
+      
+      <nav className="side-navbar">
+        <ul>
+          <li><Link className="nav-link" to="">Home</Link></li>
+          <li><Link className="nav-link" to="/FileCase">File Case</Link></li>
+          <li><Link className="nav-link" to="/ReviewCase">Review Case</Link></li>
+          <li><Link className="nav-link" to="/documentation">Documentation</Link></li>
+          <li><Link className="nav-link" to="/legaltalks">LegalTalks</Link></li>
+        </ul>
+      </nav>
+      <div className="running-cases-container">
+        <h2>Running Cases</h2>
+        <div className="filter">
+          <select value={filter} onChange={(e) => setFilter(e.target.value)}>
+            <option value="All">All</option>
+            <option value="isPending">Pending</option>
+            <option value="inProgress">In Progress</option>
+            <option value="CaseClosed">Case Closed</option>
+          </select>
         </div>
-        {/* <Routes>
-          <Route path="/FileCase" element={<FileCase />} />
-          <Route path="/ReviewCase" element={<ReviewCase />} />
-          <Route path="/documentation" element={<Documentation />} />
-          <Route path="/legaltalks" element={<LegalTalks />} />
-        </Routes> */}
+        <div className="cases-list">
+          {filteredCases.map((caseItem) => (
+            <Link key={caseItem.id} to={`/case/${caseItem.id}`} className="case-item-link">
+              <div className="case-item">
+                <h4>Case ID: {caseItem.data.CaseId}</h4>
+                <h4>Client Name: {caseItem.data.clientName}</h4>
+                <h4>Status: {caseItem.data.status}</h4>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
-    );
+      
+    </div>
+  );
 };
 
 export default AdvocateDashboard;
