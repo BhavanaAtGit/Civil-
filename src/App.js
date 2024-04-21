@@ -7,6 +7,7 @@ import LegalTalks from './components/LegalTalks';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import AdvocateDashboard from './components/AdvocateDashboard';
+import CaseDetails from './components/CaseDetails';
 import JudgeDashboard from './components/JudgeDashboard';
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
@@ -29,6 +30,7 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/Home" element={<RequireAuth><Home /></RequireAuth>} />
             <Route path="/FileCase" element={<RequireAuth><FileCase /></RequireAuth>} />
+            <Route path="//case-details/:caseId" element={<RequireAuth><CaseDetails /></RequireAuth>} />
             <Route path="/ReviewCase" element={<RequireAuth><ReviewCase /></RequireAuth>} />
             <Route path="/LegalTalks" element={<RequireAuth><LegalTalks /></RequireAuth>} />
             <Route path="/advocate-dashboard" element={<RequireAuth><AdvocateDashboard /></RequireAuth>} />

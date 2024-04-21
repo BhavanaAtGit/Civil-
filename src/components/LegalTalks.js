@@ -1,11 +1,12 @@
 // LegalTalks.js
+
 import React, { useState } from 'react';
 import '../assets/styles/LegalTalks.css';
+import { Link } from 'react-router-dom';
 
 const LegalTalks = () => {
     const [questionText, setQuestionText] = useState('');
-    const [answerText, setAnswerText] = useState('');
-    const [sortBy, setSortBy] = useState('mostRecent');
+    const [answerTexts, setAnswerTexts] = useState({});
     const [searchText, setSearchText] = useState('');
     const [questions, setQuestions] = useState([
         {
@@ -53,89 +54,92 @@ const LegalTalks = () => {
     };
 
     const addAnswer = (questionId) => {
-        const updatedQuestions = questions.map(question => {
-            if (question.id === questionId && answerText.trim() !== '') {
-                const newAnswer = {
-                    id: question.answers.length + 1,
-                    text: answerText,
-                    upvotes: 0,
-                    downvotes: 0
-                };
-                return { ...question, answers: [...question.answers, newAnswer] };
-            }
-            return question;
-        });
-        setQuestions(updatedQuestions);
-        setAnswerText('');
-    };
-
-    const handleSortChange = (event) => {
-        setSortBy(event.target.value);
-    };
-
-    const handleSearchChange = (event) => {
-        setSearchText(event.target.value);
+        if (answerTexts[questionId]?.trim() !== '') {
+            const updatedQuestions = questions.map(question => {
+                if (question.id === questionId) {
+                    const newAnswer = {
+                        id: question.answers.length + 1,
+                        text: answerTexts[questionId],
+                        upvotes: 0,
+                        downvotes: 0
+                    };
+                    return { ...question, answers: [...question.answers, newAnswer] };
+                }
+                return question;
+            });
+            setQuestions(updatedQuestions);
+            setAnswerTexts({ ...answerTexts, [questionId]: '' });
+        }
     };
 
     const handleQuestionTextChange = (event) => {
         setQuestionText(event.target.value);
     };
 
-    const handleAnswerTextChange = (event) => {
-        setAnswerText(event.target.value);
+    const handleAnswerTextChange = (event, questionId) => {
+        const { value } = event.target;
+        setAnswerTexts({ ...answerTexts, [questionId]: value });
+    };
+
+    const handleSearchChange = (event) => {
+        setSearchText(event.target.value);
     };
 
     return (
-        <div className="legal-talks-container">
-            <nav className="sidebar">
+        <div className="legal-talks-page">
+            <nav className="side-navbar">
                 <ul>
-                    <li className="create-post" onClick={addQuestion}>Create a new post +</li>
-                    <li>
-                        Sort by:
-                        <select value={sortBy} onChange={handleSortChange}>
-                            <option value="mostHelpful">Most to Least Helpful</option>
-                            <option value="mostRecent">Most to Least Recent</option>
-                            <option value="mostPopular">Most to Least Popular</option>
-                        </select>
-                    </li>
+                    <li><Link className="nav-link" to="/advocate-dashboard">Home</Link></li>
+                    <li><Link className="nav-link" to="/FileCase">File Case</Link></li>
+                    {/* <li><Link className="nav-link" to="/ReviewCase">Review Case</Link></li> */}
+                    <li><Link className="nav-link" to="/documentation">Documentation</Link></li>
+                    <li><Link className="nav-link" to="/legaltalks">LegalTalks</Link></li>
                 </ul>
             </nav>
-            <div className="main-content">
-                <input
-                    type="text"
-                    value={searchText}
-                    onChange={handleSearchChange}
-                    placeholder="Search by keywords..."
-                />
-                {questions.map((question) => (
-                    <div key={question.id} className="question-container">
-                        <div className="question">{question.question}</div>
-                        <ul className="answers">
-                            {question.answers.map((answer) => (
-                                <li key={answer.id}>{answer.text}</li>
-                            ))}
-                        </ul>
-                        <div className="metadata">
-                            <span>{question.timestamp}</span>
-                            <span>{question.views} views</span>
+            <header>
+                {/* Your header content */}
+            </header>
+            <div className="legal-talks-container">
+                <div className="main-content">
+                    <input
+                        type="text"
+                        value={searchText}
+                        onChange={handleSearchChange}
+                        placeholder="Search by keywords..."
+                    />
+                    {questions.map((question) => (
+                        <div key={question.id} className="question-container">
+                            <div className="question">{question.question}</div>
+                            <ul className="answers">
+                                {question.answers.map((answer) => (
+                                    <li key={answer.id}>{answer.text}</li>
+                                ))}
+                            </ul>
+                            <div className="metadata">
+                                <span>{question.timestamp}</span>
+                                <span>{question.views} views</span>
+                            </div>
+                            <div className="vote-buttons">
+                                <button className="upvote-button">&#9650;</button>
+                                <span>0</span>
+                                <button className="downvote-button">&#9660;</button>
+                            </div>
+                            <div className="add-answer">
+                                <input
+                                    type="text"
+                                    value={answerTexts[question.id] || ''}
+                                    onChange={(e) => handleAnswerTextChange(e, question.id)}
+                                    placeholder="Add your answer..."
+                                />
+                                <button onClick={() => addAnswer(question.id)}>Add Answer</button>
+                            </div>
                         </div>
-                        <div className="vote-buttons">
-                            <button className="upvote-button">&#9650;</button>
-                            <span>0</span>
-                            <button className="downvote-button">&#9660;</button>
-                        </div>
-                        <div className="add-answer">
-                            <input
-                                type="text"
-                                value={answerText}
-                                onChange={handleAnswerTextChange}
-                                placeholder="Add your answer..."
-                            />
-                            <button onClick={() => addAnswer(question.id)}>Add Answer</button>
-                        </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
+            <footer>
+                {/* Your footer content */}
+            </footer>
         </div>
     );
 }

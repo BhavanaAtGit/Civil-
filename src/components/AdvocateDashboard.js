@@ -4,7 +4,6 @@ import { db } from '../config/firebase-config';
 import { getDocs, collection } from 'firebase/firestore';
 import '../assets/styles/Advocate.css';
 
-
 const AdvocateDashboard = () => {
   const [runningCases, setRunningCases] = useState([]);
   const [filter, setFilter] = useState('All');
@@ -41,12 +40,11 @@ const AdvocateDashboard = () => {
 
   return (
     <div className="advocate-container">
-      
       <nav className="side-navbar">
         <ul>
           <li><Link className="nav-link" to="">Home</Link></li>
           <li><Link className="nav-link" to="/FileCase">File Case</Link></li>
-          <li><Link className="nav-link" to="/ReviewCase">Review Case</Link></li>
+          {/* <li><Link className="nav-link" to="/ReviewCase">Review Case</Link></li> */}
           <li><Link className="nav-link" to="/documentation">Documentation</Link></li>
           <li><Link className="nav-link" to="/legaltalks">LegalTalks</Link></li>
         </ul>
@@ -63,7 +61,7 @@ const AdvocateDashboard = () => {
         </div>
         <div className="cases-list">
           {filteredCases.map((caseItem) => (
-            <Link key={caseItem.id} to={`/case/${caseItem.id}`} className="case-item-link">
+            <Link key={caseItem.id} to={`/case-details/${caseItem.id}`} className="case-item-link">
               <div className="case-item">
                 <h4>Case ID: {caseItem.data.CaseId}</h4>
                 <h4>Client Name: {caseItem.data.clientName}</h4>
@@ -73,7 +71,6 @@ const AdvocateDashboard = () => {
           ))}
         </div>
       </div>
-      
     </div>
   );
 };

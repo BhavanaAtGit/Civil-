@@ -1,46 +1,71 @@
 /* FileCase.css */
 
+/* Page container */
+.file-case-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Form container */
 .file-case-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 40px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  .file-case-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .file-case-form .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .file-case-form label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .file-case-form input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .file-case-form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .file-case-form button:hover {
-    background-color: #0056b3;
-  }
-  
+  flex: 1;
+  width: 100vw; /* Update width to 90vw */
+  max-width: 500px;
+  margin: 80px auto 0; /* Adjust margin to center vertically and leave 40px from the top */
+  padding: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+/* Form title */
+.file-case-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333; /* Dark text color */
+}
+
+/* Form group */
+.file-case-form .form-group {
+  margin-bottom: 20px; /* Increase space between form groups */
+}
+
+/* Label */
+.file-case-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Make labels bold */
+  color: #555; /* Darker text color */
+}
+
+/* Input fields */
+.file-case-form input[type="text"],
+.file-case-form input[type="checkbox"] {
+  width: calc(100% - 20px); /* Adjusted width with padding */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Submit button */
+.file-case-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.file-case-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Header */
+
+
+

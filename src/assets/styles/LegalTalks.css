@@ -1,21 +1,23 @@
 /* LegalTalks.css */
-.legal-talks-container {
+
+.legal-talks-page {
   display: flex;
+  flex-direction: column;
 }
 
-.sidebar {
+.side-navbar {
   background-color: #b38b6d;
   padding: 20px;
   width: 200px;
   height: 100vh;
 }
 
-.sidebar ul {
+.side-navbar ul {
   list-style-type: none;
   padding: 0;
 }
 
-.sidebar ul li {
+.side-navbar ul li {
   color: white;
   cursor: pointer;
   margin-bottom: 10px;
@@ -24,6 +26,7 @@
 .main-content {
   flex: 1;
   padding: 20px;
+  margin-left: 200px; /* Ensure content starts after the navbar */
 }
 
 input[type="text"] {
