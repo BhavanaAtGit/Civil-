@@ -1,0 +1,43 @@
+/* Documentation.css */
+
+/* Container for main content */
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust height as needed */
+}
+
+/* Upload container styles */
+.upload-container {
+  width: 400px; /* Set width for the upload container */
+  padding: 20px; /* Add padding to the container */
+  background-color: #fff; /* Set background color */
+  border-radius: 5px; /* Add border radius */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for elevation */
+}
+
+/* File upload form styles */
+.file-upload-form {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Arrange form elements in a column */
+}
+
+/* File input styles */
+.file-input {
+  margin-bottom: 20px; /* Add bottom margin to the file input */
+}
+
+/* Button styles */
+.btn {
+  padding: 10px 20px; /* Add padding to the button */
+  background-color: #007bff; /* Set button background color */
+  color: #fff; /* Set text color to white */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border radius */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Darken button color on hover */
+}

@@ -50,7 +50,8 @@
 }
 
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+select { /* Added styles for select dropdown */
   width: calc(100% - 40px); /* Adjusted width with side margins */
   padding: 15px;
   border: 1px solid #d3d3d3;

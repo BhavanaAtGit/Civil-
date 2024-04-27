@@ -1,0 +1,75 @@
+.judge-container {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    padding-top: 80px; /* Adjust as needed to prevent overlap with header */
+  }
+  
+  .side-navbar {
+    position: fixed;
+    top: 80px; /* Adjust the top position to leave space for the header */
+    left: 0;
+    width: 200px;
+    height: calc(100vh - 80px); /* Adjust the height to fit the remaining viewport */
+    background-color: #f2f2f2;
+    padding-top: 20px;
+    border-right: 1px solid #ccc;
+  }
+  
+  .side-navbar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .side-navbar li {
+    padding: 10px;
+  }
+  
+  .side-navbar li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #000; /* Change text color to black */
+    display: block;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+  
+  .side-navbar li a:hover {
+    color: #555;
+  }
+  
+  .filed-cases-container {
+    margin-left: 220px; /* Width of the sidebar + some margin */
+  }
+  
+  .cases-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .case-item {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff; /* White background */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  }
+  
+  .case-item h4 {
+    margin: 5px 0;
+  }
+  
+  button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

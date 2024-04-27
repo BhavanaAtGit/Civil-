@@ -8,7 +8,9 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import AdvocateDashboard from './components/AdvocateDashboard';
 import CaseDetails from './components/CaseDetails';
+import Documentation from './components/Documentation';
 import JudgeDashboard from './components/JudgeDashboard';
+import Admin from './components/Admin';
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import './App.css'; // Import your global styles
@@ -34,7 +36,9 @@ function App() {
             <Route path="/ReviewCase" element={<RequireAuth><ReviewCase /></RequireAuth>} />
             <Route path="/LegalTalks" element={<RequireAuth><LegalTalks /></RequireAuth>} />
             <Route path="/advocate-dashboard" element={<RequireAuth><AdvocateDashboard /></RequireAuth>} />
+            <Route path="/admin-dashboard" element={<RequireAuth><Admin /></RequireAuth>} />
             <Route path="/judge-dashboard" element={<RequireAuth><JudgeDashboard /></RequireAuth>} />
+            <Route path="/documentation" element={<RequireAuth><Documentation /></RequireAuth>} />
           </Routes>
         </main>
 
